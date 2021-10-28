@@ -1,0 +1,87 @@
+query me {
+  me {
+    ...meUser
+  }
+}
+
+query usersConnection(
+  $where: UserWhereInput
+  $orderBy: [UserOrderByInput!]
+  $skip: Int
+  $take: Int
+) {
+  users(where: $where, orderBy: $orderBy, skip: $skip, take: $take) {
+    ...user
+  }
+  usersCount
+}
+
+query UserUnique($where: UserWhereUniqueInput!) {
+  user(where: $where) {
+    ...user
+  }
+}
+
+mutation signin($where: UserWhereUniqueInput!, $data: UserSigninDataInput!) {
+  signin(where: $where, data: $data) {
+    success
+    message
+    errors {
+      key
+      message
+    }
+    token
+    data {
+      ...user
+    }
+  }
+}
+
+mutation signup($data: UserSignupDataInput!) {
+  signup(data: $data) {
+    success
+    message
+    errors {
+      key
+      message
+    }
+    token
+    data {
+      ...user
+    }
+  }
+}
+
+mutation blockUser($where: UserWhereUniqueInput!) {
+  blockUser(where: $where) {
+    ...user
+  }
+}
+
+mutation unblockUser($where: UserWhereUniqueInput!) {
+  unblockUser(where: $where) {
+    ...user
+  }
+}
+
+fragment UserNoNesting on User {
+  id
+  createdAt
+  updatedAt
+  email
+  showEmail
+  username
+  fullname
+  showFullname
+  image
+  active
+  blocked
+}
+
+fragment user on User {
+  ...UserNoNesting
+}
+
+fragment meUser on User {
+  ...user
+}
