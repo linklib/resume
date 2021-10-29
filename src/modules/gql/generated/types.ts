@@ -359,6 +359,10 @@ export interface Query {
   /** Количество файлов */
   filesCount: Scalars['Int'];
   me?: Maybe<User>;
+  /** Технология */
+  tech?: Maybe<Tech>;
+  /** Список технологий */
+  teches: Array<Tech>;
   /** Пользователь */
   user?: Maybe<User>;
   /** Список пользователей */
@@ -384,6 +388,20 @@ export type QueryFilesArgs = {
 
 export type QueryFilesCountArgs = {
   where?: Maybe<FileWhereInput>;
+};
+
+
+export type QueryTechArgs = {
+  where: TechWhereUniqueInput;
+};
+
+
+export type QueryTechesArgs = {
+  cursor?: Maybe<TechWhereUniqueInput>;
+  orderBy?: Maybe<Array<TechOrderByInput>>;
+  skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
+  where?: Maybe<TechWhereInput>;
 };
 
 
@@ -494,6 +512,39 @@ export interface StringNullableFilter {
   not?: Maybe<NestedStringNullableFilter>;
   notIn?: Maybe<Array<Scalars['String']>>;
   startsWith?: Maybe<Scalars['String']>;
+}
+
+/** Технология */
+export interface Tech {
+  __typename?: 'Tech';
+  desc?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  image?: Maybe<Scalars['String']>;
+  link?: Maybe<Scalars['String']>;
+  title: Scalars['String'];
+}
+
+export interface TechOrderByInput {
+  desc?: Maybe<SortOrder>;
+  id?: Maybe<SortOrder>;
+  image?: Maybe<SortOrder>;
+  link?: Maybe<SortOrder>;
+  title?: Maybe<SortOrder>;
+}
+
+export interface TechWhereInput {
+  AND?: Maybe<Array<TechWhereInput>>;
+  NOT?: Maybe<Array<TechWhereInput>>;
+  OR?: Maybe<Array<TechWhereInput>>;
+  desc?: Maybe<StringNullableFilter>;
+  id?: Maybe<StringFilter>;
+  image?: Maybe<StringNullableFilter>;
+  link?: Maybe<StringNullableFilter>;
+  title?: Maybe<StringFilter>;
+}
+
+export interface TechWhereUniqueInput {
+  id?: Maybe<Scalars['String']>;
 }
 
 export interface TokenListRelationFilter {

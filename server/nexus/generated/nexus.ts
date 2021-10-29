@@ -4,7 +4,7 @@
  */
 
 import type { PrismaContext } from './../context/index'
-import type { User, File, ResetPassword } from '@prisma/client'
+import type { User, File, ResetPassword, Tech } from '@prisma/client'
 import type { core } from 'nexus'
 declare global {
   interface NexusGenCustomInputMethods<TypeName extends string> {
@@ -347,6 +347,29 @@ export interface NexusGenInputs {
     notIn?: string[] | null // [String!]
     startsWith?: string | null // String
   }
+  TechOrderByInput: {
+    // input type
+    desc?: NexusGenEnums['SortOrder'] | null // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null // SortOrder
+    image?: NexusGenEnums['SortOrder'] | null // SortOrder
+    link?: NexusGenEnums['SortOrder'] | null // SortOrder
+    title?: NexusGenEnums['SortOrder'] | null // SortOrder
+  }
+  TechWhereInput: {
+    // input type
+    AND?: NexusGenInputs['TechWhereInput'][] | null // [TechWhereInput!]
+    NOT?: NexusGenInputs['TechWhereInput'][] | null // [TechWhereInput!]
+    OR?: NexusGenInputs['TechWhereInput'][] | null // [TechWhereInput!]
+    desc?: NexusGenInputs['StringNullableFilter'] | null // StringNullableFilter
+    id?: NexusGenInputs['StringFilter'] | null // StringFilter
+    image?: NexusGenInputs['StringNullableFilter'] | null // StringNullableFilter
+    link?: NexusGenInputs['StringNullableFilter'] | null // StringNullableFilter
+    title?: NexusGenInputs['StringFilter'] | null // StringFilter
+  }
+  TechWhereUniqueInput: {
+    // input type
+    id?: string | null // String
+  }
   TokenListRelationFilter: {
     // input type
     every?: NexusGenInputs['TokenWhereInput'] | null // TokenWhereInput
@@ -465,6 +488,7 @@ export interface NexusGenObjects {
     message: string // String!
     success: boolean // Boolean!
   }
+  Tech: Tech
   User: User
 }
 
@@ -516,6 +540,8 @@ export interface NexusGenFieldTypes {
     files: NexusGenRootTypes['File'][] // [File!]!
     filesCount: number // Int!
     me: NexusGenRootTypes['User'] | null // User
+    tech: NexusGenRootTypes['Tech'] | null // Tech
+    teches: NexusGenRootTypes['Tech'][] // [Tech!]!
     user: NexusGenRootTypes['User'] | null // User
     users: NexusGenRootTypes['User'][] // [User!]!
     usersCount: number // Int!
@@ -536,6 +562,14 @@ export interface NexusGenFieldTypes {
     errors: NexusGenRootTypes['RequestError'][] // [RequestError!]!
     message: string // String!
     success: boolean // Boolean!
+  }
+  Tech: {
+    // field return type
+    desc: string | null // String
+    id: string // String!
+    image: string | null // String
+    link: string | null // String
+    title: string // String!
   }
   User: {
     // field return type
@@ -592,6 +626,8 @@ export interface NexusGenFieldTypeNames {
     files: 'File'
     filesCount: 'Int'
     me: 'User'
+    tech: 'Tech'
+    teches: 'Tech'
     user: 'User'
     users: 'User'
     usersCount: 'Int'
@@ -612,6 +648,14 @@ export interface NexusGenFieldTypeNames {
     errors: 'RequestError'
     message: 'String'
     success: 'Boolean'
+  }
+  Tech: {
+    // field return type name
+    desc: 'String'
+    id: 'String'
+    image: 'String'
+    link: 'String'
+    title: 'String'
   }
   User: {
     // field return type name
@@ -679,6 +723,18 @@ export interface NexusGenArgTypes {
     filesCount: {
       // args
       where?: NexusGenInputs['FileWhereInput'] | null // FileWhereInput
+    }
+    tech: {
+      // args
+      where: NexusGenInputs['TechWhereUniqueInput'] // TechWhereUniqueInput!
+    }
+    teches: {
+      // args
+      cursor?: NexusGenInputs['TechWhereUniqueInput'] | null // TechWhereUniqueInput
+      orderBy?: NexusGenInputs['TechOrderByInput'][] | null // [TechOrderByInput!]
+      skip?: number | null // Int
+      take?: number | null // Int
+      where?: NexusGenInputs['TechWhereInput'] | null // TechWhereInput
     }
     user: {
       // args

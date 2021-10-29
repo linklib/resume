@@ -11,6 +11,7 @@ export * from './resetPasswordProcessor';
 export * from './signin';
 export * from './signup';
 export * from './singleUpload';
+export * from './teches';
 export * from './unblockUser';
 export * from './user';
 export * from './usersConnection';export * from './types';

@@ -112,3 +112,11 @@ model ResetPassword {
 
   @@index([User], name: "User")
 }
+
+model Tech {
+  id         String   @id @default(cuid())
+  title      String
+  desc       String?
+  link       String?
+  image      String?
+}

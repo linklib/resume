@@ -1,0 +1,9 @@
+query teches {
+  teches {
+    id
+    title
+    desc
+    link
+    image
+  }
+}

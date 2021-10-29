@@ -1,5 +1,6 @@
 import { Prisma, PrismaClient } from '@prisma/client'
 import { createPassword } from '../server/nexus/types/User/resolvers'
+import { tech } from './data'
 
 const prisma = new PrismaClient()
 
@@ -31,6 +32,11 @@ async function main() {
       })
       .catch(console.error)
   }
+
+  await prisma.tech.createMany({
+    data: tech,
+  })
+
   // eslint-disable-next-line no-console
   console.log(`Seeding finished.`)
 }

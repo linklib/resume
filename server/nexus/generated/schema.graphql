@@ -369,6 +369,22 @@ type Query {
   me: User
 
   """
+  Технология
+  """
+  tech(where: TechWhereUniqueInput!): Tech
+
+  """
+  Список технологий
+  """
+  teches(
+    cursor: TechWhereUniqueInput
+    orderBy: [TechOrderByInput!]
+    skip: Int
+    take: Int
+    where: TechWhereInput
+  ): [Tech!]!
+
+  """
   Пользователь
   """
   user(where: UserWhereUniqueInput!): User
@@ -483,6 +499,40 @@ input StringNullableFilter {
   not: NestedStringNullableFilter
   notIn: [String!]
   startsWith: String
+}
+
+"""
+Технология
+"""
+type Tech {
+  desc: String
+  id: String!
+  image: String
+  link: String
+  title: String!
+}
+
+input TechOrderByInput {
+  desc: SortOrder
+  id: SortOrder
+  image: SortOrder
+  link: SortOrder
+  title: SortOrder
+}
+
+input TechWhereInput {
+  AND: [TechWhereInput!]
+  NOT: [TechWhereInput!]
+  OR: [TechWhereInput!]
+  desc: StringNullableFilter
+  id: StringFilter
+  image: StringNullableFilter
+  link: StringNullableFilter
+  title: StringFilter
+}
+
+input TechWhereUniqueInput {
+  id: String
 }
 
 input TokenListRelationFilter {

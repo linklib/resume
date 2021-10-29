@@ -19,6 +19,7 @@ interface PrismaModels {
   Letter: Prisma.Letter
   Log: Prisma.Log
   ResetPassword: Prisma.ResetPassword
+  Tech: Prisma.Tech
 }
 
 // Prisma input types metadata
@@ -47,6 +48,10 @@ interface NexusPrismaInputs {
     resetPasswords: {
       filtering: 'AND' | 'OR' | 'NOT' | 'id' | 'createdAt' | 'updatedAt' | 'code' | 'password' | 'validTill' | 'User' | 'User_ResetPasswordToUser'
       ordering: 'id' | 'createdAt' | 'updatedAt' | 'code' | 'password' | 'validTill' | 'User'
+    }
+    teches: {
+      filtering: 'AND' | 'OR' | 'NOT' | 'id' | 'title' | 'desc' | 'link' | 'image'
+      ordering: 'id' | 'title' | 'desc' | 'link' | 'image'
     }
   },
   User: {
@@ -82,6 +87,9 @@ interface NexusPrismaInputs {
   ResetPassword: {
 
   }
+  Tech: {
+
+  }
 }
 
 // Prisma output types metadata
@@ -99,6 +107,8 @@ interface NexusPrismaOutputs {
     logs: 'Log'
     resetPassword: 'ResetPassword'
     resetPasswords: 'ResetPassword'
+    tech: 'Tech'
+    teches: 'Tech'
   },
   Mutation: {
     createOneUser: 'User'
@@ -137,6 +147,12 @@ interface NexusPrismaOutputs {
     deleteOneResetPassword: 'ResetPassword'
     deleteManyResetPassword: 'AffectedRowsOutput'
     upsertOneResetPassword: 'ResetPassword'
+    createOneTech: 'Tech'
+    updateOneTech: 'Tech'
+    updateManyTech: 'AffectedRowsOutput'
+    deleteOneTech: 'Tech'
+    deleteManyTech: 'AffectedRowsOutput'
+    upsertOneTech: 'Tech'
   },
   User: {
     id: 'String'
@@ -213,6 +229,13 @@ interface NexusPrismaOutputs {
     User: 'String'
     User_ResetPasswordToUser: 'User'
   }
+  Tech: {
+    id: 'String'
+    title: 'String'
+    desc: 'String'
+    link: 'String'
+    image: 'String'
+  }
 }
 
 // Helper to gather all methods relative to a model
@@ -223,6 +246,7 @@ interface NexusPrismaMethods {
   Letter: Typegen.NexusPrismaFields<'Letter'>
   Log: Typegen.NexusPrismaFields<'Log'>
   ResetPassword: Typegen.NexusPrismaFields<'ResetPassword'>
+  Tech: Typegen.NexusPrismaFields<'Tech'>
   Query: Typegen.NexusPrismaFields<'Query'>
   Mutation: Typegen.NexusPrismaFields<'Mutation'>
 }
